@@ -37,3 +37,7 @@ lerna-debug.log*
 # yarn
 .yarn/*
 yarn.lock
+.env
+*.db
+migration_lock.toml
+migration.sql
