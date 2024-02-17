@@ -16,9 +16,10 @@ export class Notification {
   private readonly props: NotificationProps;
 
   public constructor(
-    props: Replace<NotificationProps, { createdAt?: Date; id?: string }>,
+    props: Replace<NotificationProps, { createdAt?: Date }>,
+    id?: string,
   ) {
-    this._id = props.id ?? randomUUID();
+    this._id = id ?? randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),

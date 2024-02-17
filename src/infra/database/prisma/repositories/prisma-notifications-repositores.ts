@@ -40,4 +40,23 @@ export class PrismaNotificationsRepository implements NotificationRepository {
       data: raw,
     });
   }
+
+  async countManyByRecipientId(recipientId: string): Promise<number> {
+    const count = await this.prisma.notification.count({
+      where: {
+        recipientId,
+      },
+    });
+    return count;
+  }
+
+  async findManyByRecipientId(recipientId: string): Promise<Notification[]> {
+    const raw = await this.prisma.notification.findMany({
+      where: {
+        recipientId,
+      },
+    });
+
+    return raw.map(PrismaNotificationMapper.toDomain);
+  }
 }
