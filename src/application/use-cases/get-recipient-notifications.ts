@@ -1,12 +1,13 @@
+import { Notification } from '@application/entities/notification';
 import { Injectable } from '@nestjs/common';
 import { NotificationRepository } from '../repositories/notification-repository';
 
-interface CountRecipientNotificationsRequest {
+interface GetRecipientNotificationsRequest {
   recipientId: string;
 }
 
-interface CountRecipientNotificationsResponse {
-  count: number;
+interface GetRecipientNotificationsResponse {
+  notifications: Notification[];
 }
 
 /// A vantagem de usar as interfaces acima criadas é que uma vez que
@@ -15,19 +16,19 @@ interface CountRecipientNotificationsResponse {
 /// Então, se uma aplicação esperar receber de volta um Notification ela irá
 /// receber uma instância de Notification certamente.
 @Injectable()
-export class CountRecipientNotifications {
+export class GetRecipientNotifications {
   constructor(private notificationRepository: NotificationRepository) {}
 
   async execute(
-    request: CountRecipientNotificationsRequest,
-  ): Promise<CountRecipientNotificationsResponse> {
+    request: GetRecipientNotificationsRequest,
+  ): Promise<GetRecipientNotificationsResponse> {
     const { recipientId } = request;
 
-    const count =
-      await this.notificationRepository.countManyByRecipientId(recipientId);
+    const notifications =
+      await this.notificationRepository.findManyByRecipientId(recipientId);
 
     return {
-      count,
+      notifications,
     };
   }
 }
