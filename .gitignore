@@ -38,6 +38,8 @@ lerna-debug.log*
 .yarn/*
 yarn.lock
 .env
-*.db
+
+# prisma
 migration_lock.toml
 migration.sql
+*.db*

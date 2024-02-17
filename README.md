@@ -33,6 +33,10 @@ Favor consultar documentação do Prisma
 2. Access the application at `http://localhost:3000`.
 3. `npx prisma studio -p 5556` para acompanhar o banco
 
+### Checagem de erros no código sem gerar arquivos de build
+
+`npx tsc -noEmit`
+
 ## Usage on production
 
 🚧 **Production env not available yet.** 🚧

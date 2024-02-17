@@ -4,7 +4,25 @@ import { Notification } from '@application/entities/notification';
 export class InMemoryNotificationRepository implements NotificationRepository {
   public notifications: Notification[] = [];
 
+  async findById(notificationId: string): Promise<Notification | null> {
+    return (
+      this.notifications.find(
+        (notification) => notification.id === notificationId,
+      ) || null
+    );
+  }
+
   async create(notification: Notification): Promise<void> {
     this.notifications.push(notification);
+  }
+
+  async save(notification: Notification): Promise<void> {
+    const index = this.notifications.findIndex(
+      (item) => item.id === notification.id,
+    );
+
+    if (index >= 0) {
+      this.notifications[index] = notification;
+    }
   }
 }
