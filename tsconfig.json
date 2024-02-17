@@ -21,7 +21,7 @@
     "strictPropertyInitialization": false,
     "paths": {
       "@application/*": ["src/application/*"],
-      "@test/*": ["src/test/*"],
+      "@test/*": ["test/*"],
       "@infra/*": ["src/infra/*"],
       "@helpers/*": ["src/helpers/*"]
     },
