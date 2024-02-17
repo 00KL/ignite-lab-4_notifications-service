@@ -37,6 +37,10 @@ Favor consultar documentação do Prisma
 
 `npx tsc -noEmit`
 
+### Para facilitar a testagem é possível importar as requisições do Insomnia
+
+`Insomnia_ignite-lab-4_notifications-service.json`
+
 ## Usage on production
 
 🚧 **Production env not available yet.** 🚧
