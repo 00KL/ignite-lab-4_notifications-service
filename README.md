@@ -27,11 +27,15 @@ A forma mais simples de conectar é rodando o comando a baixo q irá criar um ba
 
 Favor consultar documentação do Prisma
 
-## Usage
+## Usage on develpment
 
-1. Run the application using `yarn start`.
+1. Run the application using `yarn dev`.
 2. Access the application at `http://localhost:3000`.
 3. `npx prisma studio -p 5556` para acompanhar o banco
+
+## Usage on production
+
+🚧 **Production env not available yet.** 🚧
 
 ## Contributing
 
