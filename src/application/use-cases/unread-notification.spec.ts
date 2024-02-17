@@ -6,22 +6,22 @@ import { makeNotification } from '@test/factories/notification-factory';
 describe('Read Notification', () => {
   it('should be able to unread a notification', async () => {
     const notificationRepository = new InMemoryNotificationRepository();
-    const UnreadNotification = new UnreadNotification(notificationRepository);
+    const unreadNotification = new UnreadNotification(notificationRepository);
 
     const notification = makeNotification({ readAt: new Date() });
 
     await notificationRepository.create(notification);
 
-    await UnreadNotification.execute({ notificationId: notification.id });
+    await unreadNotification.execute({ notificationId: notification.id });
 
     expect(notificationRepository.notifications[0].readAt).toEqual(null);
   });
   it('should not be able to unread a notification that does not exist', async () => {
     const notificationRepository = new InMemoryNotificationRepository();
-    const UnreadNotification = new UnreadNotification(notificationRepository);
+    const unreadNotification = new UnreadNotification(notificationRepository);
 
     expect(
-      UnreadNotification.execute({
+      unreadNotification.execute({
         notificationId: 'non-existent-notification',
       }),
     ).rejects.toThrow(NotificationNotFound);

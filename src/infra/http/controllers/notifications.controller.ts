@@ -1,9 +1,9 @@
-import { GetRecipientNotifications } from './../../../application/use-cases/get-recipient-notifications';
-import { CountRecipientNotifications } from './../../../application/use-cases/count-recipient-notifications';
-import { CancelNotification } from './../../../application/use-cases/cancel-notification';
-import { UnreadNotification } from './../../../application/use-cases/unread-notification';
-import { ReadNotification } from './../../../application/use-cases/read-notification';
-import { SendNotification } from './../../../application/use-cases/send-notification';
+import { GetRecipientNotifications } from '@application/use-cases/get-recipient-notifications';
+import { CountRecipientNotifications } from '@application/use-cases/count-recipient-notifications';
+import { CancelNotification } from '@application/use-cases/cancel-notification';
+import { UnreadNotification } from '@application/use-cases/unread-notification';
+import { ReadNotification } from '@application/use-cases/read-notification';
+import { SendNotification } from '@application/use-cases/send-notification';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateNotificationBody } from '../dtos/create-notification-body';
 import { NotificationViewModel } from '../view-models/notification-view-model';
@@ -13,7 +13,7 @@ export class NotificationsController {
   constructor(
     private sendNotification: SendNotification,
     private readNotification: ReadNotification,
-    private UnreadNotification: UnreadNotification,
+    private unreadNotification: UnreadNotification,
     private cancelNotification: CancelNotification,
     private countRecipientNotifications: CountRecipientNotifications,
     private getRecipientNotifications: GetRecipientNotifications,
@@ -41,7 +41,7 @@ export class NotificationsController {
 
   @Patch(':id/unread')
   async unread(@Param('id') id: string) {
-    await this.UnreadNotification.execute({ notificationId: id });
+    await this.unreadNotification.execute({ notificationId: id });
   }
 
   @Patch(':id/cancel')
